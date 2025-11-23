@@ -1,6 +1,5 @@
 #include <string>
 #include <cassert>
-
 #include "MPautomatic.h"
 
 void tests_zero(){
