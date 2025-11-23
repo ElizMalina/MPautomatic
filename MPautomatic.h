@@ -4,6 +4,19 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <exception>
+
+class MPError : public std::exception{
+private:
+    std::string errorMessage;
+public:
+    explicit MPError(const std::string& message): errorMessage(message){}
+
+    const char* what() const noexcept override {
+        return errorMessage.c_str();
+    }
+
+};
 
 enum State{
     q0, q1, q2, q3, q4, f
@@ -19,12 +32,12 @@ public:
         input.append("e");
     }
 
-    
+    State getCurrentState() const {
+        return current;
+    }
     
     void process(){
         char ch;
-
-       
 
         for(size_t i=0;i<input.size();++i){
             ch=input[i];
@@ -44,8 +57,7 @@ public:
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            std::cout<<"Ошибка: в позиции "<<i+1<<" неожидаемый символ " << ch;
-                            return;
+                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q1:    
@@ -65,8 +77,7 @@ public:
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            std::cout<<"Ошибка: в позиции "<<i+1<<" неожидаемый символ " << ch;
-                            return;
+                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q2:    if(ch=='x' && buff[0]=='Y'){
@@ -79,8 +90,7 @@ public:
                             current=q3;
                             buff.erase(buff.begin());
                         }else{
-                            std::cout<<"Ошибка: в позиции "<<i+1<<" неожидаемый символ " << ch;
-                            return;
+                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q3:    if(ch=='x' && buff[0]=='B'){
@@ -102,8 +112,7 @@ public:
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            std::cout<<"Ошибка: в позиции "<<i+1<<" неожидаемый символ " << ch;
-                            return;
+                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q4:  if(ch=='b' && buff[0]=='B'){
@@ -116,26 +125,22 @@ public:
                             current=q1;
                             buff.insert(buff.begin(), 'C');
                         }else{
-                            std::cout<<"Ошибка: в позиции "<<i+1<<" неожидаемый символ " << ch;
-                            return;
+                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
-            case f:     if (ch=='e' && buff[0]=='Y'){
-                            std::cout<< "True";
-                        }else{
-                            std::cout<<"Ошибка: в позиции "<<i+1<<" неожидаемый символ " << ch;
+            case f:     if (ch!='e' && buff[0]!='Y'){
+                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         return;
             default:
-                std::cerr <<"ERROR"<<std::endl;
-                return;
+                throw MPError("Неизвестное состояыние");
             }
         }
 
         if (current==f){
-            std::cout<< "цепочка принадлежит языку";
+            std::cout<< "цепочка принадлежит языку"<<std::endl;
         }else{
-            std::cout<<"ошибка состояния"<<current;
+            throw MPError("Ошибка конечного состояния: "+ std::string(2,current));
         }
     }
 

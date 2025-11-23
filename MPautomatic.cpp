@@ -5,7 +5,7 @@
 
 
 
-int main(){
+/*int main(){
 
     std::string input;
     std::cin>>input;
@@ -14,4 +14,4 @@ int main(){
     mp.process();
 
     return 0;
-}
+}*/
