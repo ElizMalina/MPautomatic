@@ -57,7 +57,7 @@ public:
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("éË®°™†: ¢ ØÆß®Ê®® "+std::to_string(i+1)+" ≠•Æ¶®§†•¨Î© ·®¨¢Æ´ " +std::string(1, ch));
+                            throw MPError("–û—à–∏–±–∫–∞: –≤ –ø–æ–∑–∏—Ü–∏–∏ "+std::to_string(i+1)+" –Ω–µ–æ–∂–∏–¥–∞–µ–º—ã–π —Å–∏–º–≤–æ–ª " +std::string(1, ch));
                         }
                         break;
             case q1:    
@@ -77,7 +77,7 @@ public:
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("éË®°™†: ¢ ØÆß®Ê®® "+std::to_string(i+1)+" ≠•Æ¶®§†•¨Î© ·®¨¢Æ´ " +std::string(1, ch));
+                            throw MPError("–û—à–∏–±–∫–∞: –≤ –ø–æ–∑–∏—Ü–∏–∏ "+std::to_string(i+1)+" –Ω–µ–æ–∂–∏–¥–∞–µ–º—ã–π —Å–∏–º–≤–æ–ª " +std::string(1, ch));
                         }
                         break;
             case q2:    if(ch=='x' && buff[0]=='Y'){
@@ -90,7 +90,7 @@ public:
                             current=q3;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("éË®°™†: ¢ ØÆß®Ê®® "+std::to_string(i+1)+" ≠•Æ¶®§†•¨Î© ·®¨¢Æ´ " +std::string(1, ch));
+                            throw MPError("–û—à–∏–±–∫–∞: –≤ –ø–æ–∑–∏—Ü–∏–∏ "+std::to_string(i+1)+" –Ω–µ–æ–∂–∏–¥–∞–µ–º—ã–π —Å–∏–º–≤–æ–ª " +std::string(1, ch));
                         }
                         break;
             case q3:    if(ch=='x' && buff[0]=='B'){
@@ -112,7 +112,7 @@ public:
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("éË®°™†: ¢ ØÆß®Ê®® "+std::to_string(i+1)+" ≠•Æ¶®§†•¨Î© ·®¨¢Æ´ " +std::string(1, ch));
+                            throw MPError("–û—à–∏–±–∫–∞: –≤ –ø–æ–∑–∏—Ü–∏–∏ "+std::to_string(i+1)+" –Ω–µ–æ–∂–∏–¥–∞–µ–º—ã–π —Å–∏–º–≤–æ–ª " +std::string(1, ch));
                         }
                         break;
             case q4:  if(ch=='b' && buff[0]=='B'){
@@ -125,22 +125,22 @@ public:
                             current=q1;
                             buff.insert(buff.begin(), 'C');
                         }else{
-                            throw MPError("éË®°™†: ¢ ØÆß®Ê®® "+std::to_string(i+1)+" ≠•Æ¶®§†•¨Î© ·®¨¢Æ´ " +std::string(1, ch));
+                            throw MPError("–û—à–∏–±–∫–∞: –≤ –ø–æ–∑–∏—Ü–∏–∏ "+std::to_string(i+1)+" –Ω–µ–æ–∂–∏–¥–∞–µ–º—ã–π —Å–∏–º–≤–æ–ª " +std::string(1, ch));
                         }
                         break;
             case f:     if (ch!='e' && buff[0]!='Y'){
-                            throw MPError("éË®°™†: ¢ ØÆß®Ê®® "+std::to_string(i+1)+" ≠•Æ¶®§†•¨Î© ·®¨¢Æ´ " +std::string(1, ch));
+                            throw MPError("–û—à–∏–±–∫–∞: –≤ –ø–æ–∑–∏—Ü–∏–∏ "+std::to_string(i+1)+" –Ω–µ–æ–∂–∏–¥–∞–µ–º—ã–π —Å–∏–º–≤–æ–ª " +std::string(1, ch));
                         }
                         return;
             default:
-                throw MPError("ç•®ß¢•·‚≠Æ• ·Æ·‚ÆÔÎ≠®•");
+                throw MPError("–ù–µ–∏–∑–≤–µ—Å—Ç–Ω–æ–µ —Å–æ—Å—Ç–æ—è–Ω–∏–µ");
             }
         }
 
         if (current==f){
-            std::cout<< "Ê•ØÆÁ™† Ø‡®≠†§´•¶®‚ ÔßÎ™„"<<std::endl;
+            std::cout<< "—Ü–µ–ø–æ—á–∫–∞ –ø—Ä–∏–Ω–∞–¥–ª–µ–∂–∏—Ç —è–∑—ã–∫—É"<<std::endl;
         }else{
-            throw MPError("éË®°™† ™Æ≠•Á≠Æ£Æ ·Æ·‚ÆÔ≠®Ô: "+ std::string(2,current));
+            throw MPError("–û—à–∏–±–∫–∞ –∫–æ–Ω–µ—á–Ω–æ–≥–æ —Å–æ—Å—Ç–æ—è–Ω–∏—è: "+ std::string(2,current));
         }
     }
 
