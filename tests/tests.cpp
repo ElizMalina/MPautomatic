@@ -47,7 +47,7 @@ void tests_err(){
     }catch(const MPError& e){
         std::string errorMessage = e.what();
         std::cerr<<errorMessage<<std::endl;
-        assert(std::string(e.what()).find("Žè¨¡ª : ¢ ¯®§¨æ¨¨ 3 ­¥®¦¨¤ ¥¬ë© á¨¬¢®« y") != std::string::npos);
+        assert(std::string(e.what()).find("ÐžÑˆÐ¸Ð±ÐºÐ°: Ð² Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ 3 Ð½ÐµÐ¾Ð¶Ð¸Ð´Ð°ÐµÐ¼Ñ‹Ð¹ ÑÐ¸Ð¼Ð²Ð¾Ð» y") != std::string::npos);
     }
 
     try{
@@ -57,21 +57,21 @@ void tests_err(){
     }catch(const MPError& e){
         std::string errorMessage = e.what();
         std::cerr<<errorMessage<<std::endl;
-        assert(std::string(e.what()).find("Žè¨¡ª : ¢ ¯®§¨æ¨¨ 3 ­¥®¦¨¤ ¥¬ë© á¨¬¢®« b") != std::string::npos);
+        assert(std::string(e.what()).find("ÐžÑˆÐ¸Ð±ÐºÐ°: Ð² Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ 3 Ð½ÐµÐ¾Ð¶Ð¸Ð´Ð°ÐµÐ¼Ñ‹Ð¹ ÑÐ¸Ð¼Ð²Ð¾Ð» b") != std::string::npos);
     }
 }
 
 int main(){
-    std::cout << " ç «® â¥áâ¨à®¢ ­¨ï MPautomatic..." << std::endl;
+    std::cout << "ÐÐ°Ñ‡Ð°Ð»Ð¾ Ñ‚ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ MPautomatic..." << std::endl;
     
     try{
         tests_zero();
         tests_mp();
         tests_err();
 
-        std::cout<<"’¥áâë ãá¯¥è­® ¯à®©¤¥­ë"<<std::endl;
+        std::cout<<"Ð¢ÐµÑÑ‚Ñ‹ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¿Ñ€Ð¾Ð¹Ð´ÐµÐ½Ñ‹"<<std::endl;
     } catch(...){
-        std::cerr<<" àãè¥­ â¥áâ"<<std::endl;
+        std::cerr<<"ÐžÑˆÐ¸Ð±ÐºÐ° Ñ‚ÐµÑÑ‚Ð°"<<std::endl;
         return 1;
     }
 
