@@ -3,15 +3,15 @@
 #include "MPautomatic.h"
 
 void tests_zero(){
-    MPautomatic test1("1111");
+    MPautomatic test1("");
     test1.process();
     assert(test1.getCurrentState() == State::f);
 
-    MPautomatic test2("xxxb11");
+    MPautomatic test2("zaaa");
     test2.process();
     assert(test2.getCurrentState() == State::f);
 
-    MPautomatic test3("11zaaa");
+    MPautomatic test3("xxxb");
     test3.process();
     assert(test3.getCurrentState() == State::f);
 
@@ -22,7 +22,7 @@ void tests_mp(){
     test4.process();
     assert(test4.getCurrentState() == State::f);
 
-    MPautomatic test5("xxxbzaaa");
+    MPautomatic test5("xxxxxxxxxbbbzaaa");
     test5.process();
     assert(test5.getCurrentState() == State::f);
 
@@ -71,7 +71,7 @@ int main(){
 
         std::cout<<"Тесты успешно пройдены"<<std::endl;
     } catch(...){
-        std::cerr<<"Ошибка теста"<<std::endl;
+        std::cerr<<"ошибка теста"<<std::endl;
         return 1;
     }
 
