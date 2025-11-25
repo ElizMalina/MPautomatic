@@ -50,14 +50,12 @@ public:
                         }else if(ch=='z' && buff[0]=='Y'){
                             current=q1;
                             buff.insert(buff.begin(), 'Z');
-                        }else if(ch=='1' && buff[0]=='Y'){
-                            current=q1;
-                            buff.insert(buff.begin(), 'C');
                         }else if(ch=='e' && buff[0]=='Y'){
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
+                            input.pop_back();
+                            throw MPError(input+" Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q1:    
@@ -70,14 +68,12 @@ public:
                         }else if(ch=='a' && buff[0]=='Z'){
                             current=q2;
                             buff.insert(buff.begin(), 'A');
-                        }else if(ch=='1' && buff[0]=='C'){
-                            current=q0;
-                            buff.erase(buff.begin());
                         }else if(ch=='e' && buff[0]=='Y'){
                             current=f;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
+                            input.pop_back();
+                            throw MPError(input+" Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q2:    if(ch=='x' && buff[0]=='Y'){
@@ -90,7 +86,8 @@ public:
                             current=q3;
                             buff.erase(buff.begin());
                         }else{
-                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
+                            input.pop_back();
+                            throw MPError(input+" Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case q3:    if(ch=='x' && buff[0]=='B'){
@@ -105,31 +102,28 @@ public:
                         }else if(ch=='a' && buff[0]=='Z'){
                             current=q1;
                             buff.erase(buff.begin());
-                        }else if(ch=='1' && buff[0]=='Y'){
-                            current=q1;
-                            buff.insert(buff.begin(), 'C');
-                        }else if(ch=='e' && buff[0]=='Y'){
-                            current=f;
-                            buff.erase(buff.begin());
                         }else{
-                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
+                            input.pop_back();
+                            throw MPError(input+" Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
-            case q4:  if(ch=='b' && buff[0]=='B'){
+            case q4:    if(ch=='b' && buff[0]=='B'){
                             current=q3;
                             buff.erase(buff.begin());
                         }else if(ch=='z' && buff[0]=='Y'){
                             current=q1;
                             buff.insert(buff.begin(), 'Z');
-                        }else if(ch=='1' && buff[0]=='Y'){
-                            current=q1;
-                            buff.insert(buff.begin(), 'C');
+                        }else if(ch=='e' && buff[0]=='Y'){
+                            current=f;
+                            buff.erase(buff.begin());
                         }else{
-                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
+                            input.pop_back();
+                            throw MPError(input+" Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         break;
             case f:     if (ch!='e' && buff[0]!='Y'){
-                            throw MPError("Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
+                            input.pop_back();
+                            throw MPError(input + " Ошибка: в позиции "+std::to_string(i+1)+" неожидаемый символ " +std::string(1, ch));
                         }
                         return;
             default:
@@ -138,7 +132,8 @@ public:
         }
 
         if (current==f){
-            std::cout<< "цепочка принадлежит языку"<<std::endl;
+            input.pop_back();
+            std::cout<< input<<" цепочка успешно обработана"<<std::endl;
         }else{
             throw MPError("Ошибка конечного состояния: "+ std::string(2,current));
         }
